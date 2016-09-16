@@ -3,6 +3,7 @@ package login;
 import DAO.DBAccess;
 import DAO.DBConnection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,10 +26,24 @@ public class LoginHandler extends HttpServlet {
         String password = request.getParameter("password");
         PrintWriter out = response.getWriter();
 
-        out.println (setDiagnose());
+        String id=checkLogin(username,password);
+
+        request.setAttribute("user_id",id);
+
+        RequestDispatcher rd= request.getRequestDispatcher("WebUser/home.jsp");
+        rd.forward(request, response);
+
+        // Set response content type
+        //response.setContentType("text/html");
+
+        // New location to be redirected
+        //String site = new String("WebUser/home.jsp");
+
+        //response.setStatus(response.SC_MOVED_TEMPORARILY);
+        //response.setHeader("Location", site);
     }
 
-    public String setDiagnose(){
+    public String checkLogin(String username, String passowrd){
         try {
             dbconnection =DBConnection.getDBConnection();
         } catch (ClassNotFoundException e) {
@@ -36,14 +51,19 @@ public class LoginHandler extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String str="SELECT * FROM user";
+        String str="SELECT * FROM user where username='"+username+"' and password='"+passowrd+"';";
         try {
             ResultSet ts= DBAccess.getData(dbconnection.getConnectionToDB(),str,null);
             ts.first();
-            String name=ts.getString("name");
-            return name;
+            String id=ts.getString("name");
+            if(id!=null){
+                return id;
+            }
+            else{
+                return "0";
+            }
         } catch (SQLException ex) {
-           return null;
+           return "0";
         }
 
     }

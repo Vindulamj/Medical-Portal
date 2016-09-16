@@ -5,10 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author User
- */
 public class DBAccess {
 
     public static ResultSet getData(Connection connection, String query) throws SQLException {
