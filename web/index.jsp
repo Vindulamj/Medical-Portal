@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body background="resources/images/bg.jpg">
 
     <div class="container">
         <div class="row">
