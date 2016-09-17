@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>loginServlet</servlet-name>
-        <servlet-class>login.LoginHandler</servlet-class>
+        <servlet-class>org.login.LoginHandler</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
