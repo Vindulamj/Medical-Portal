@@ -36,11 +36,20 @@ public class LoginHandler extends HttpServlet {
         //tsrct.check
 
         if(!id.equals("0")){
-            request.setAttribute("user_id",id);
-            request.setAttribute("reports",getReportList(id));
-            request.setAttribute("name",getName(id));
-            RequestDispatcher rd= request.getRequestDispatcher("WebUser/home.jsp");
-            rd.forward(request, response);
+            if(getType(id).equals("user")){
+                request.setAttribute("user_id",id);
+                request.setAttribute("reports",getReportList(id));
+                request.setAttribute("name",getName(id));
+                RequestDispatcher rd= request.getRequestDispatcher("WebUser/home.jsp");
+                rd.forward(request, response);
+            }
+            else if(getType(id).equals("scanner")){
+                request.setAttribute("user_id",id);
+                request.setAttribute("name",getName(id));
+                RequestDispatcher rd= request.getRequestDispatcher("LabUser/home.jsp");
+                rd.forward(request, response);
+            }
+
         }
         else{
             out.println("<script type=\"text/javascript\">");
@@ -130,6 +139,26 @@ public class LoginHandler extends HttpServlet {
             ResultSet ts= DBAccess.getData(dbconnection.getConnectionToDB(),str,null);
             ts.first();
             String name=ts.getString("usr_name");
+            return name;
+        } catch (SQLException ex) {
+            return null;
+        }
+
+    }
+
+    public String getType(String id){
+        try {
+            dbconnection =DBConnection.getDBConnection();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String str="SELECT usr_type FROM users where usr_id='"+id+"';";
+        try {
+            ResultSet ts= DBAccess.getData(dbconnection.getConnectionToDB(),str,null);
+            ts.first();
+            String name=ts.getString("usr_type");
             return name;
         } catch (SQLException ex) {
             return null;
