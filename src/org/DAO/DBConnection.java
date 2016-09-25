@@ -16,7 +16,7 @@ public class DBConnection {
     private static String pword ="root";
     //private static String uname = "root";
 
-    private static String host = "jdbc:mysql://localhost:3306/medical_portal";
+    private static String host = "jdbc:mysql://localhost:3306/tad_med";
 
     public DBConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");

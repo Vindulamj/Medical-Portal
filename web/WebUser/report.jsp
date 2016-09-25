@@ -105,13 +105,13 @@
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
-                    <a href="#">
+                    <a href="/login?uid=${user_id}">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span></a>
                 </li>
-                </ul>
+            </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
@@ -123,12 +123,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Available Reports
-                <small>Browse through the reports here</small>
+                Report
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Reports</li>
+                <li class="active">Report</li>
             </ol>
         </section>
 
@@ -152,36 +151,29 @@
                                     </thead>
                                     <tbody>
                                     <%
-                                        ArrayList<Report> list = (ArrayList<Report>) request.getAttribute("reports");
+                                        ArrayList<Report> list = (ArrayList<Report>) request.getAttribute("report");
                                         for(Report report : list) {
-                                           %> <tr>
-                                            <td><a href="/home?name=${name}&id=<% out.println(report.getId()); %>&uid=${user_id}"><% out.println(report.getId()); %> </td></a>
-                                            <td> <% out.println(report.getHeading()); %> </td>
-                                            <td> <% out.println(report.getContent()); %> </td>
-                                            <td> <% out.println(report.getStatus()); %> </td>
-                                            <td> <% out.println(report.getDate()); %> </td>
-                                           </tr> <%
+                                    %> <tr>
+                                        <td> <% out.println(report.getId()); %> </td>
+                                        <td> <% out.println(report.getHeading()); %> </td>
+                                        <td> <% out.println(report.getContent()); %> </td>
+                                        <td> <% out.println(report.getStatus()); %> </td>
+                                        <td> <% out.println(report.getDate()); %> </td>
+                                    </tr> <%
                                         }
                                     %>
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Heading</th>
-                                        <th>Content</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
+                                <br><br><br>
+                                <center><img src="${image}" width="800px" height="600px"/></center>
                             </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
 
 
-        </section>
-        <!-- /.content -->
+            </section>
+            <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
