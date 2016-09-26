@@ -41,7 +41,7 @@ public class ReportHandler extends HttpServlet {
     }
 
     private ArrayList<Report> getReportList(String id){
-        ArrayList<Report> reportList =new ArrayList<>();
+        ArrayList<Report> reportList = new ArrayList<Report>();
         try {
             dbconnection = DBConnection.getDBConnection();
         } catch (ClassNotFoundException e) {

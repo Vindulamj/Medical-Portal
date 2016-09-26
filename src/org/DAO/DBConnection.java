@@ -13,7 +13,7 @@ public class DBConnection {
     private static DBConnection dBConnection;
    // private static String host = "localhost";
     private static String uname = "root";
-    private static String pword ="root";
+    private static String pword ="ijse";
     //private static String uname = "root";
 
     private static String host = "jdbc:mysql://localhost:3306/tad_med";
