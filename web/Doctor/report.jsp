@@ -70,7 +70,7 @@
 
                                 <p>
                                     ${name }
-                                    <small>Role : Patient</small>
+                                    <small>Role : Doctor</small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
@@ -172,12 +172,11 @@
                             </div>
                             <!-- /.box-body -->
                         </div>
-                        <!-- /.box -->
                         <div class="test">
                             <img src="${image}" width="700px" height="400px"/>
                             <img src="${image}" width="700px" height="400px"/>
                         </div>
-
+                        <!-- /.box -->
             </section>
             <!-- /.content -->
     </div>

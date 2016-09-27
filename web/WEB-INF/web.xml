@@ -30,4 +30,13 @@
         <servlet-name>ShomeServlet</servlet-name>
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DhomeServlet</servlet-name>
+        <servlet-class>org.home.HomeHandler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DhomeServlet</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -49,6 +49,13 @@ public class LoginHandler extends HttpServlet {
                 RequestDispatcher rd= request.getRequestDispatcher("LabUser/home.jsp");
                 rd.forward(request, response);
             }
+            else if(getType(id).equals("doctor")){
+                request.setAttribute("user_id",id);
+                request.setAttribute("reports",getDoctorReportList(id));
+                request.setAttribute("name",getName(id));
+                RequestDispatcher rd= request.getRequestDispatcher("Doctor/home.jsp");
+                rd.forward(request, response);
+            }
 
         }
         else{
@@ -63,13 +70,27 @@ public class LoginHandler extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // reading the user input
         String id = request.getParameter("uid");
-        System.out.println(id);
+
+        if(getType(id).equals("user")){
             request.setAttribute("user_id",id);
             request.setAttribute("reports",getReportList(id));
             request.setAttribute("name",getName(id));
             RequestDispatcher rd= request.getRequestDispatcher("WebUser/home.jsp");
             rd.forward(request, response);
-
+        }
+        else if(getType(id).equals("scanner")){
+            request.setAttribute("user_id",id);
+            request.setAttribute("name",getName(id));
+            RequestDispatcher rd= request.getRequestDispatcher("LabUser/home.jsp");
+            rd.forward(request, response);
+        }
+        else if(getType(id).equals("doctor")){
+            request.setAttribute("user_id",id);
+            request.setAttribute("reports",getDoctorReportList(id));
+            request.setAttribute("name",getName(id));
+            RequestDispatcher rd= request.getRequestDispatcher("Doctor/home.jsp");
+            rd.forward(request, response);
+        }
     }
 
     public String checkLogin(String username, String passowrd){
@@ -113,6 +134,34 @@ public class LoginHandler extends HttpServlet {
                 Report report =new Report();
                 report.setId(ts.getString("rep_id"));
                 report.setDoctor(ts.getString("rep_doctor"));
+                report.setContent(ts.getString("usr_content"));
+                report.setHeading(ts.getString("usr_heading"));
+                report.setHeading(ts.getString("usr_created_in"));
+                report.setHeading(ts.getString("usr_status"));
+                reportList.add(report);
+            }
+        } catch (SQLException ex) {
+            return null;
+        }
+        return reportList;
+    }
+
+    private ArrayList<Report> getDoctorReportList(String id){
+        ArrayList<Report> reportList =new ArrayList<>();
+        try {
+            dbconnection =DBConnection.getDBConnection();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String str="SELECT * FROM med_report where rep_doctor='"+id+"';";
+        try {
+            ResultSet ts= DBAccess.getData(dbconnection.getConnectionToDB(),str,null);
+            while(ts.next()){
+                Report report =new Report();
+                report.setId(ts.getString("rep_id"));
+                report.setDoctor(ts.getString("rep_user"));
                 report.setContent(ts.getString("usr_content"));
                 report.setHeading(ts.getString("usr_heading"));
                 report.setHeading(ts.getString("usr_created_in"));

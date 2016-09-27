@@ -21,11 +21,7 @@
     <link rel="stylesheet" href="../resources/dist/css/skins/_all-skins.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="../resources/plugins/datatables/dataTables.bootstrap.css">
-    <style>
-        .test{
-            margin-left: 100px;
-        }
-    </style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -70,7 +66,7 @@
 
                                 <p>
                                     ${name }
-                                    <small>Role : Patient</small>
+                                    <small>Role : Doctor</small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
@@ -109,7 +105,7 @@
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
-                    <a href="/login?uid=${user_id}">
+                    <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -127,11 +123,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Report
+                Available Reports
+                <small>Browse through the reports here</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Report</li>
+                <li class="active">Reports</li>
             </ol>
         </section>
 
@@ -155,10 +152,10 @@
                                     </thead>
                                     <tbody>
                                     <%
-                                        ArrayList<Report> list = (ArrayList<Report>) request.getAttribute("report");
+                                        ArrayList<Report> list = (ArrayList<Report>) request.getAttribute("reports");
                                         for(Report report : list) {
                                     %> <tr>
-                                        <td> <% out.println(report.getId()); %> </td>
+                                        <td><a href="/main?name=${name}&id=<% out.println(report.getId()); %>&uid=${user_id}"><% out.println(report.getId()); %> </td></a>
                                         <td> <% out.println(report.getHeading()); %> </td>
                                         <td> <% out.println(report.getContent()); %> </td>
                                         <td> <% out.println(report.getStatus()); %> </td>
@@ -167,16 +164,21 @@
                                         }
                                     %>
                                     </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Heading</th>
+                                        <th>Content</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                    </tr>
+                                    </tfoot>
                                 </table>
-                                <br><br><br>
                             </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
-                        <div class="test">
-                            <img src="${image}" width="700px" height="400px"/>
-                            <img src="${image}" width="700px" height="400px"/>
-                        </div>
+
 
             </section>
             <!-- /.content -->
