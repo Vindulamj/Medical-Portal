@@ -56,10 +56,10 @@ public class ReportHandler extends HttpServlet {
                 Report report =new Report();
                 report.setId(ts.getString("rep_id"));
                 report.setDoctor(ts.getString("rep_doctor"));
-                report.setContent(ts.getString("usr_content"));
-                report.setHeading(ts.getString("usr_heading"));
-                report.setHeading(ts.getString("usr_created_in"));
-                report.setHeading(ts.getString("usr_status"));
+                report.setContent(ts.getString("rep_content"));
+                report.setHeading(ts.getString("rep_heading"));
+                report.setDate(ts.getString("rep_created_in"));
+                report.setStatus(ts.getString("rep_status"));
                 reportList.add(report);
             }
         } catch (SQLException ex) {

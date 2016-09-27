@@ -21,11 +21,7 @@
     <link rel="stylesheet" href="../resources/dist/css/skins/_all-skins.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="../resources/plugins/datatables/dataTables.bootstrap.css">
-    <style>
-        .test{
-            margin-left: 100px;
-        }
-    </style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -61,7 +57,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="../resources/images/user.png" class="user-image" alt="User Image">
-                            <span class="hidden-xs">${name}</span>
+                            <span class="hidden-xs">${name }</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -70,7 +66,7 @@
 
                                 <p>
                                     ${name }
-                                    <small>Role : Patient</small>
+                                    <small>Role : Scanner</small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
@@ -107,13 +103,18 @@
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
-                <li class="header">MAIN NAVIGATION</li>
+                <li class="header">Dashboard</li>
                 <li class="treeview">
-                    <a href="/login?uid=${user_id}">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span></a>
+                    <a href="home.jsp">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        <span>Send Reports</span>
+                    </a>
+                </li>
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-tag"></i>
+                        <span>Add Patient</span>
+                    </a>
                 </li>
             </ul>
         </section>
@@ -127,11 +128,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Report
+                Patient Registration
+                <small>Add details here</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Report</li>
+                <li class="active">Add Reports</li>
             </ol>
         </section>
 
@@ -141,46 +143,49 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="box">
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Heading</th>
-                                        <th>Content</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <%
-                                        ArrayList<Report> list = (ArrayList<Report>) request.getAttribute("report");
-                                        for(Report report : list) {
-                                    %> <tr>
-                                        <td> <% out.println(report.getId()); %> </td>
-                                        <td> <% out.println(report.getHeading()); %> </td>
-                                        <td> <% out.println(report.getContent()); %> </td>
-                                        <td> <% out.println(report.getStatus()); %> </td>
-                                        <td> <% out.println(report.getDate()); %> </td>
-                                    </tr> <%
-                                        }
-                                    %>
-                                    </tbody>
-                                </table>
-                                <br><br><br>
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <!-- /.box -->
-                        <div class="test">
-                            <img src="${image}" width="700px" height="400px"/>
-                            <img src="${image}" width="700px" height="400px"/>
-                        </div>
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Patient Registration Form</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <form role="form" method="post" action="http://localhost/TadHack/sms_index.php"
+                                      enctype="multipart/form-data">
+                                    <div class="box-body">
+                                        <div class="form-group has-feedback">
+                                            User Name:
+                                            <input type="text" class="form-control" placeholder="username" name="username">
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            Mobile:
+                                            <input type="text" class="form-control" placeholder="Mobile" name="mobile">
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            Email:
+                                            <input type="email" class="form-control" placeholder="email" name="email">
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            NIC:
+                                            <input type="text" class="form-control" placeholder="nic" name="nic">
+                                        </div>
+                                        <input type="hidden" class="form-control" name="add_patient" value="add_patient">
+                                    </div>
+                                    <!-- /.box-body -->
 
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box -->
+
+                        </div>
+                    </div>
+                </div>
             </section>
-            <!-- /.content -->
+        </section>
     </div>
+    <!-- /.content -->
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">

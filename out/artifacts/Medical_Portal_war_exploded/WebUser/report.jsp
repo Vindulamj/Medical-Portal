@@ -21,7 +21,11 @@
     <link rel="stylesheet" href="../resources/dist/css/skins/_all-skins.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="../resources/plugins/datatables/dataTables.bootstrap.css">
-
+    <style>
+        .test{
+            margin-left: 100px;
+        }
+    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -57,7 +61,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="../resources/images/user.png" class="user-image" alt="User Image">
-                            <span class="hidden-xs">${name }</span>
+                            <span class="hidden-xs">${name}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -165,12 +169,14 @@
                                     </tbody>
                                 </table>
                                 <br><br><br>
-                                <center><img src="${image}" width="800px" height="600px"/></center>
                             </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
-
+                        <div class="test">
+                            <img src="${image}" width="700px" height="400px"/>
+                            <img src="${image}" width="700px" height="400px"/>
+                        </div>
 
             </section>
             <!-- /.content -->

@@ -65,7 +65,7 @@
                                 <img src="../resources/images/user.png" class="img-circle" alt="User Image">
 
                                 <p>
-                                    ${name }
+                                    ${name}
                                     <small>Role : Patient</small>
                                 </p>
                             </li>
@@ -164,22 +164,11 @@
                                         }
                                     %>
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Heading</th>
-                                        <th>Content</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
-
-
         </section>
         <!-- /.content -->
     </div>
@@ -189,7 +178,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 1.0.0
         </div>
-        <strong>Copyright &copy; 2016 <a href="http://www.titansmora.com">Team Titans</a>.</strong> All rights
+        <strong>Copyright &copy; 2016 <a href="http://www.titansmora.org">Team Titans</a>.</strong> All rights
         reserved.
     </footer>
 </div>

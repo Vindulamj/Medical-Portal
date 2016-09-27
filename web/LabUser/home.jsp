@@ -103,13 +103,18 @@
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
-                <li class="header">MAIN NAVIGATION</li>
-                <li class="treeview">
+                <li class="header">Dashboard</li>
+                <li class="treeview active">
                     <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span></a>
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        <span>Send Reports</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="LabUser/addpatient.jsp">
+                        <i class="glyphicon glyphicon-tag"></i>
+                        <span>Add Patient</span>
+                    </a>
                 </li>
             </ul>
         </section>
@@ -140,35 +145,68 @@
                         <div class="box">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Quick Example</h3>
+                                    <h3 class="box-title">Report</h3>
                                 </div>
                                 <!-- /.box-header -->
                                 <!-- form start -->
-                                <form role="form" method="post" action="http://localhost/RichmondLiveBackEnd/fileupload.php" enctype="multipart/form-data">
+                                <form role="form" method="post" action="http://localhost/TadHack/sms_index.php"
+                                      enctype="multipart/form-data">
                                     <div class="box-body">
                                         <div class="form-group">
-                                            <label >Doctor</label>
-                                            <input type="text" class="form-control" id="param3" placeholder="Doctor">
+                                            <label>Patient Telephone</label>
+                                            <input type="text" class="form-control" id="param4" placeholder="Patient"
+                                                   name="patient_tel">
                                         </div>
                                         <div class="form-group">
-                                            <label >Heading</label>
-                                            <input type="text" class="form-control" id="param2" placeholder="Heading">
+                                            <label>Doctor Name</label>
+                                            <input type="text" class="form-control" id="param3" placeholder="Doctor"
+                                                   name="doctor_name">
                                         </div>
                                         <div class="form-group">
-                                            <label >Content</label>
-                                            <input type="text" class="form-control" id="param1" placeholder="Content">
+                                            <label>Heading</label>
+                                            <input type="text" class="form-control" id="param2" placeholder="Heading"
+                                                   name="heading">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="file">File input</label>
-                                            <input type="file" id="file" name="files[]" multiple="multiple" accept="image/*" />
+                                        <div class="form-group has-feedback">
+                                            <select name="type" id="type">
+                                                <option value="blood">Blood Report</option>
+                                                <option value="xray">X-Ray</option>
+                                                <option value="urine">Urine Test</option>
+                                            </select>
+                                        </div>
+                                        <div id="blood-div">
+                                            <div class="form-group">
+                                                <label>WBC</label>
+                                                <input type="text" class="form-control" placeholder="WBC"
+                                                       name="wbc">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>RBC</label>
+                                                <input type="text" class="form-control" placeholder="RBC"
+                                                       name="rbc">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Platelets</label>
+                                                <input type="text" class="form-control" placeholder="PLATELETS"
+                                                       name="platelets">
+                                            </div>
+                                        </div>
+                                        <div id="xray-div" style="display:none">
+                                            <div class="form-group">
+                                                <label for="file">File input</label>
+                                                <input type="file" id="file" name="files[]" multiple="multiple"
+                                                       accept="image/*"/>
 
-                                            <p class="help-block">Add the image of the scan</p>
+                                                <p class="help-block">Add the image of the scan</p>
+                                            </div>
                                         </div>
+                                        <input type="hidden" class="form-control" id="param5" name="file_upload"
+                                               value="file_upload">
                                     </div>
                                     <!-- /.box-body -->
 
                                     <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -179,8 +217,8 @@
                 </div>
             </section>
         </section>
-        </div>
-            <!-- /.content -->
+    </div>
+    <!-- /.content -->
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">
@@ -208,5 +246,17 @@
 <!-- DataTables -->
 <script src="../resources/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../resources/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script>
+    $('#type').change(function () {
+        var type = $(this).val();
+        if(type=='blood'){
+            $('#blood-div').slideDown();
+            $('#xray-div').slideUp();
+        }else if(type=='xray'){
+            $('#blood-div').slideUp();
+            $('#xray-div').slideDown();
+        }
+    });
+</script>
 </body>
 </html>

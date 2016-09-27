@@ -56,9 +56,11 @@
                 </div>
                 <!-- /.col -->
             </div>
-        </form>
-
-        <a href="#">I forgot my password</a><br>
+        </form><br>
+        <div align="center">
+            <a href="#">I forgot my password</a><br>
+            <a href="signup.jsp">Sign Up</a><br>
+        </div>
 
     </div>
     <!-- /.login-box-body -->
