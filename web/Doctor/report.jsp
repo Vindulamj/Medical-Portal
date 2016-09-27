@@ -66,7 +66,7 @@
 
                                 <p>
                                     ${name }
-                                    <small>Role : Patient</small>
+                                    <small>Role : Doctor</small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
@@ -165,7 +165,7 @@
                                     </tbody>
                                 </table>
                                 <br><br><br>
-                                <img src="${image}" width="600px" height="400px"/>
+                                <img src="${image}" width="600px" height="400px" hspace="50"/>
                                 <img src="${image}" width="600px" height="400px"/>
                             </div>
                             <!-- /.box-body -->
