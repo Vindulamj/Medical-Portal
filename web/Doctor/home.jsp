@@ -155,7 +155,7 @@
                                         ArrayList<Report> list = (ArrayList<Report>) request.getAttribute("reports");
                                         for(Report report : list) {
                                     %> <tr>
-                                        <td><a href="/home?name=${name}&id=<% out.println(report.getId()); %>&uid=${user_id}"><% out.println(report.getId()); %> </td></a>
+                                        <td><a href="/main?name=${name}&id=<% out.println(report.getId()); %>&uid=${user_id}"><% out.println(report.getId()); %> </td></a>
                                         <td> <% out.println(report.getHeading()); %> </td>
                                         <td> <% out.println(report.getContent()); %> </td>
                                         <td> <% out.println(report.getStatus()); %> </td>

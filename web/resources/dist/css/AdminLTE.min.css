@@ -5194,3 +5194,6 @@ table.text-center, table.text-center td, table.text-center th {
         white-space: normal !important
     }
 }
+.space{
+    margin: 40px;
+}

@@ -48,7 +48,7 @@ public class HomeHandler extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String str="SELECT * FROM med_report where rep_doc='"+id+"';";
+        String str="SELECT * FROM med_report where rep_doctor='"+id+"';";
         try {
             ResultSet ts= DBAccess.getData(dbconnection.getConnectionToDB(),str,null);
             while(ts.next()){

@@ -21,7 +21,11 @@
     <link rel="stylesheet" href="../resources/dist/css/skins/_all-skins.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="../resources/plugins/datatables/dataTables.bootstrap.css">
-
+    <style>
+        .test{
+            margin-left: 100px;
+        }
+    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -165,14 +169,14 @@
                                     </tbody>
                                 </table>
                                 <br><br><br>
-                                <img src="${image}" width="600px" height="400px" hspace="50"/>
-                                <img src="${image}" width="600px" height="400px"/>
                             </div>
                             <!-- /.box-body -->
                         </div>
+                        <div class="test">
+                            <img src="${image}" width="700px" height="400px"/>
+                            <img src="${image}" width="700px" height="400px"/>
+                        </div>
                         <!-- /.box -->
-
-
             </section>
             <!-- /.content -->
     </div>

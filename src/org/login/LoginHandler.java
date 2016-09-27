@@ -70,13 +70,27 @@ public class LoginHandler extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // reading the user input
         String id = request.getParameter("uid");
-        System.out.println(id);
+
+        if(getType(id).equals("user")){
             request.setAttribute("user_id",id);
             request.setAttribute("reports",getReportList(id));
             request.setAttribute("name",getName(id));
             RequestDispatcher rd= request.getRequestDispatcher("WebUser/home.jsp");
             rd.forward(request, response);
-
+        }
+        else if(getType(id).equals("scanner")){
+            request.setAttribute("user_id",id);
+            request.setAttribute("name",getName(id));
+            RequestDispatcher rd= request.getRequestDispatcher("LabUser/home.jsp");
+            rd.forward(request, response);
+        }
+        else if(getType(id).equals("doctor")){
+            request.setAttribute("user_id",id);
+            request.setAttribute("reports",getDoctorReportList(id));
+            request.setAttribute("name",getName(id));
+            RequestDispatcher rd= request.getRequestDispatcher("Doctor/home.jsp");
+            rd.forward(request, response);
+        }
     }
 
     public String checkLogin(String username, String passowrd){
